@@ -17,9 +17,9 @@ public class Main extends Application{
     }
 
     void drawCircle(GraphicsContext gc, float radius){
+
         gc.setStroke(Color.BLUE);
         gc.strokeOval(100, 100, radius*2, radius*2);
-        gc.strokeOval(100, 100, radius*4, radius*4);
 
     }
 
@@ -29,11 +29,16 @@ public class Main extends Application{
         final Canvas canvas = new Canvas(250, 250);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        drawCircle(gc, 30);
-        drawCircle(gc, 60);
-        drawCircle(gc, 100);
-        drawCircle(gc, 400);
-
+        System.out.println("Введите количество кругов");
+        Scanner sc = new Scanner(System.in);
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        int d = sc.nextInt();
+        while (b>0) {
+            drawCircle(gc, c);
+            drawCircle(gc, d);
+            b--;
+        }
         Pane root = new Pane();
         root.getChildren().addAll(canvas);
         primaryStage.setScene(new Scene(root));
