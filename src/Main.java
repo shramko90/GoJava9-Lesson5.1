@@ -19,14 +19,14 @@ public class Main extends Application{
     void drawCircle(GraphicsContext gc, float radius){
 
         gc.setStroke(Color.BLUE);
-        gc.strokeOval(100, 100, radius*2, radius*2);
+        gc.strokeOval(125, 0, radius*4, radius*4);
 
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        final Canvas canvas = new Canvas(250, 250);
+        final Canvas canvas = new Canvas(350, 350);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
         System.out.println("Введите количество кругов");
@@ -34,10 +34,11 @@ public class Main extends Application{
         int b = sc.nextInt();
         int c = sc.nextInt();
         int d = sc.nextInt();
-        while (b>0) {
-            drawCircle(gc, c);
-            drawCircle(gc, d);
-            b--;
+        for (int i =0; i<b; i++){
+            if (i>0 & i<b) {
+                drawCircle(gc, c);
+                c++;
+            }
         }
         Pane root = new Pane();
         root.getChildren().addAll(canvas);
