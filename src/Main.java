@@ -1,48 +1,30 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.util.Scanner;
-
 public class Main extends Application{
+    private static final int HEIGHT = 400;
+    private static final int WIDTH = 500;
 
     public static void main(String[] args) {
         launch(args);
     }
 
-    void drawCircle(GraphicsContext gc, float radius){
-
-        gc.setStroke(Color.BLUE);
-        gc.strokeOval(125, 0, radius*4, radius*4);
-
-    }
-
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        final Canvas canvas = new Canvas(350, 350);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-
-        System.out.println("Введите количество кругов");
-        Scanner sc = new Scanner(System.in);
-        int b = sc.nextInt();
-        int c = sc.nextInt();
-        int d = sc.nextInt();
-        for (int i =0; i<b; i++){
-            if (i>0 & i<b) {
-                drawCircle(gc, c);
-                c++;
-            }
-        }
         Pane root = new Pane();
-        root.getChildren().addAll(canvas);
-        primaryStage.setScene(new Scene(root));
+
+        SnowmanInterface snowmanInterface = new SnowmanInterface();
+        snowmanInterface.snowmanInterfaceInit(root, primaryStage);
+
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setWidth(WIDTH);
+        primaryStage.setHeight(HEIGHT);
+        primaryStage.setX(Screen.getPrimary().getBounds().getWidth() - primaryStage.getWidth());
         primaryStage.show();
     }
 
